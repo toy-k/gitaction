@@ -1,6 +1,6 @@
-package com.example.gitaction;
+package com.example.gitaction.action;
 
-import com.example.gitaction.action.ActionController;
+import com.example.gitaction.GitactionApplication;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
