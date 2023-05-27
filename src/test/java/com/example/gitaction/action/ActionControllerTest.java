@@ -1,36 +1,32 @@
 package com.example.gitaction.action;
 
+import com.example.gitaction.GitactionApplication;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+import org.springframework.boot.test.context.SpringBootTest;
 
+import static org.junit.jupiter.api.Assertions.*;
 
-//@SpringBootTest(classes = GitactionApplication.class)
-@WebMvcTest(ActionController.class)
+@SpringBootTest(classes = GitactionApplication.class)
 @DisplayName("ActionControllerTest")
 class ActionControllerTest {
 
-    @Autowired
-    private MockMvc mockMvc;
+    @Autowired private ActionController actionController;
 
     @Test
     @DisplayName("plus")
-    void hello() throws Exception{
+    void hello() {
 
-        mockMvc.perform(MockMvcRequestBuilders.get("/api/action/plus"))
-                .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.content().string("3"));
+        Long result = actionController.hello();
+        assertEquals(3L, result);
     }
 
     @Test
     @DisplayName("minus")
-    void minus() throws Exception{
-        mockMvc.perform(MockMvcRequestBuilders.get("/api/action/minus"))
-                .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.content().string("8"));
+    void minus() {
+
+            Long result = actionController.minus();
+            assertEquals(8L, result);
     }
 }
